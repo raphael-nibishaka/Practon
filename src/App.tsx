@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RegisterForm from './RegisterForm';
+
+import LoginForm from './LoginForm';
+import Dashboard from './Dashboard';
+import ForgotPasswordForm from './ForgotPasswordForm';
+import ResetPasswordForm from './ResetPasswordForm';
+import CertificationsSection from './CertificationSection';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    return (
+
+    <Router>
+      <Routes>
+        <Route path="/register" element={<RegisterForm />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Dashboard />} />
+              <Route path="/favorites" element={<Dashboard />} />
+              <Route path="/tests" element={<Dashboard />} />
+              <Route path="/cert" element={<CertificationsSection userId={1}/>} />
+              <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+              <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
+
+      </Routes>
+    </Router>
   );
 }
 
