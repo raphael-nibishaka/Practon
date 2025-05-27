@@ -36,9 +36,15 @@ const LoginForm: React.FC = () => {
 
                 toast.success('Welcome back! Login successful.');
 
-                // Redirect after short delay
+                // Redirect based on user role
                 setTimeout(() => {
-                    navigate('/dashboard');
+                    if (userData.role === 'ADMIN') {
+                        navigate('/admin');
+                    } else if (userData.role === 'ORGANIZATION') {
+                        navigate('/organization');
+                    } else {
+                        navigate('/dashboard');
+                    }
                 }, 1000);
             } else {
                 // Handle specific status codes with friendly messages
