@@ -284,6 +284,7 @@ const Dashboard: React.FC = () => {
         // Clear session storage
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('isAuthenticated');
+        sessionStorage.removeItem('token');
         toast.success('Logged out successfully');
         setTimeout(() => {
             navigate('/login');

@@ -76,7 +76,11 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
                 }
 
                 // Fetch users using the organization ID
-                const response = await fetch(`http://localhost:8098/persons?orgId=${organizationCode}`);
+                const response = await fetch(`http://localhost:8098/persons?orgId=${organizationCode}`, {
+                    headers: {
+                        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                    }
+                });
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
                 }
@@ -113,7 +117,11 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
         setLoadingDetails(true);
         try {
             // Fetch skills
-            const skillsResponse = await fetch(`http://localhost:8098/skills/owner/${userCode}`);
+            const skillsResponse = await fetch(`http://localhost:8098/skills/owner/${userCode}`, {
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                }
+            });
             if (!skillsResponse.ok) {
                 throw new Error('Failed to fetch skills');
             }
@@ -121,7 +129,11 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
             setUserSkills(skillsData);
 
             // Fetch certifications
-            const certsResponse = await fetch(`http://localhost:8098/certifications/owner/${userCode}`);
+            const certsResponse = await fetch(`http://localhost:8098/certifications/owner/${userCode}`, {
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                }
+            });
             if (!certsResponse.ok) {
                 throw new Error('Failed to fetch certifications');
             }
@@ -146,6 +158,7 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
                 },
                 body: JSON.stringify({
                     organizationId: user?.code,
@@ -159,7 +172,11 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
 
             toast.success('User hired successfully!');
             // Refresh the users list
-            const updatedResponse = await fetch('http://localhost:8098/persons/available');
+            const updatedResponse = await fetch('http://localhost:8098/persons/available', {
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                }
+            });
             if (updatedResponse.ok) {
                 const updatedData = await updatedResponse.json();
                 setUsers(updatedData);
@@ -187,6 +204,7 @@ const OrganizationDashboard: React.FC<OrganizationDashboardProps> = ({ user }) =
     const handleLogout = () => {
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('isAuthenticated');
+        sessionStorage.removeItem('token');
         navigate('/login');
     };
 

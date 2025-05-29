@@ -31,8 +31,9 @@ const LoginForm: React.FC = () => {
                 const userData = await response.json();
 
                 // Store user data in sessionStorage
-                sessionStorage.setItem('user', JSON.stringify(userData));
+                sessionStorage.setItem('user', JSON.stringify(userData.user));
                 sessionStorage.setItem('isAuthenticated', 'true');
+                sessionStorage.setItem('token', userData.token);
 
                 toast.success('Welcome back! Login successful.');
 
@@ -67,30 +68,30 @@ const LoginForm: React.FC = () => {
     };
 
     return (
-        <div className="w-full h-screen flex">
+        <div className="w-full h-screen flex select-none">
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
 
             {/* Left Panel */}
-            <div className="w-2/5 bg-[#0B1437] hidden md:flex flex-col justify-center items-center">
+            <div className="w-2/5 bg-[#0B1437] hidden md:flex flex-col justify-center items-center select-none">
                 <div className="w-72 h-72 bg-white rounded-full" />
-                <p className="text-white text-lg mt-6 font-['Space+Grotesk'] font-semibold tracking-wider">Login with <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent font-['Orbitron']">DevUp</span></p>
+                <p className="text-white text-lg mt-6 font-['Space+Grotesk'] font-semibold tracking-wider select-none">Login with <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent font-['Orbitron']">DevUp</span></p>
             </div>
 
             {/* Form Section */}
-            <div className="flex-1 flex items-center justify-center px-8">
+            <div className="flex-1 flex items-center justify-center px-8 select-none">
                 <form onSubmit={handleSubmit} className="w-full max-w-md space-y-5">
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0B1437] text-start">Welcome Back !!!</h2>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0B1437] text-start select-none">Welcome Back !!!</h2>
 
                     {/* Google login */}
                     <button
                         type="button"
-                        className="w-full border py-3 px-4 rounded-lg flex items-center justify-center hover:bg-gray-50"
+                        className="w-full border py-3 px-4 rounded-lg flex items-center justify-center hover:bg-gray-50 select-none"
                     >
                         <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5 mr-2" />
                         <span className="text-gray-700">Login with Google</span>
                     </button>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 select-none">
                         <hr className="flex-1 border-t" />
                         <span className="text-sm text-gray-500">or</span>
                         <hr className="flex-1 border-t" />
@@ -98,7 +99,7 @@ const LoginForm: React.FC = () => {
 
                     {/* Email */}
                     <div>
-                        <label htmlFor="email" className="text-sm text-gray-600 block mb-1">Email</label>
+                        <label htmlFor="email" className="text-sm text-gray-600 block mb-1 select-none">Email</label>
                         <input
                             id="email"
                             type="email"
@@ -113,8 +114,8 @@ const LoginForm: React.FC = () => {
                     {/* Password */}
                     <div>
                         <div className="flex justify-between items-center mb-1">
-                            <label htmlFor="password" className="text-sm text-gray-600">Password</label>
-                            <a href="/forgot-password" className="text-xs text-blue-600 hover:underline">Forgot password?</a>
+                            <label htmlFor="password" className="text-sm text-gray-600 select-none">Password</label>
+                            <a href="/forgot-password" className="text-xs text-blue-600 hover:underline select-none">Forgot password?</a>
                         </div>
                         <input
                             id="password"
@@ -130,7 +131,7 @@ const LoginForm: React.FC = () => {
                     {/* Submit */}
                     <button
                         type="submit"
-                        className="w-full bg-[#0B1437] text-white py-3 rounded-lg hover:opacity-90 flex items-center justify-center"
+                        className="w-full bg-[#0B1437] text-white py-3 rounded-lg hover:opacity-90 flex items-center justify-center select-none"
                         disabled={isLoading}
                     >
                         {isLoading ? (
@@ -146,11 +147,11 @@ const LoginForm: React.FC = () => {
                         )}
                     </button>
 
-                    <p className="text-sm text-center">
+                    <p className="text-sm text-center select-none">
                         New to site?{' '}
                         <span
                             onClick={() => navigate('/register')}
-                            className="text-[#0B1437] font-semibold cursor-pointer hover:underline"
+                            className="text-[#0B1437] font-semibold cursor-pointer hover:underline select-none"
                         >
                             Sign Up
                         </span>

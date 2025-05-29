@@ -152,7 +152,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
     }
 
     return (
-        <div className="flex h-screen bg-gray-50">
+        <div className="flex h-screen bg-gray-50 select-none">
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -167,7 +167,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
             />
 
             {/* Sidebar */}
-            <div className="w-64 flex-shrink-0 bg-blue-950 text-white">
+            <div className="w-64 flex-shrink-0 bg-blue-950 text-white select-none">
                 <div className="p-6">
                     <h2 className="text-2xl font-semibold font-['Orbitron'] bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">DevUp Admin</h2>
                 </div>
@@ -176,8 +176,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                         <Link
                             key={item.name}
                             to={item.path}
-                            className={`flex items-center px-6 py-4 ${activeTab === item.name.toLowerCase() ? 'bg-blue-900' : ''
-                                } hover:bg-blue-900`}
+                            className={`flex items-center px-6 py-4 ${activeTab === item.name.toLowerCase() ? 'bg-blue-900' : ''} hover:bg-blue-900 select-none`}
                             onClick={() => setActiveTab(item.name.toLowerCase())}
                         >
                             <item.icon className="h-5 w-5 mr-3" />
@@ -188,7 +187,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                 <div className="absolute bottom-0 w-64 p-4">
                     <button
                         onClick={handleLogout}
-                        className="w-full py-3 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+                        className="w-full py-3 bg-gray-500 text-white rounded hover:bg-gray-600 transition select-none"
                     >
                         Logout
                     </button>
@@ -198,7 +197,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
             {/* Main Content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Header */}
-                <header className="bg-lavender-100 border-b shadow-sm">
+                <header className="bg-lavender-100 border-b shadow-sm select-none">
                     <div className="flex justify-between items-center p-4">
                         <button onClick={() => navigate(-1)} className="text-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,7 +214,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                 <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                             </svg>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-semibold">
+                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-semibold select-none">
                             {user?.name.charAt(0)}
                         </div>
                     </div>
@@ -223,7 +222,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
 
                 {/* Main Content Area */}
                 <main className="flex-1 overflow-auto p-6">
-                    <div className="mb-6">
+                    <div className="mb-6 select-none">
                         <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
                         <p className="text-gray-600">View and manage user profiles, skills, and certifications</p>
                     </div>
@@ -231,30 +230,29 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* User List */}
                         <div className="lg:col-span-1 bg-white rounded-lg shadow">
-                            <div className="p-4 border-b">
+                            <div className="p-4 border-b select-none">
                                 <h2 className="text-lg font-semibold text-gray-900">Users</h2>
                             </div>
                             <div className="divide-y divide-gray-200">
                                 {users.map((user) => (
                                     <div
                                         key={user.code}
-                                        className={`p-4 cursor-pointer hover:bg-gray-50 ${selectedUser?.code === user.code ? 'bg-blue-50' : ''
-                                            }`}
+                                        className={`p-4 cursor-pointer hover:bg-gray-50 ${selectedUser?.code === user.code ? 'bg-blue-50' : ''}`}
                                         onClick={() => handleUserSelect(user)}
                                     >
                                         <div className="flex items-center space-x-3">
                                             <div className="flex-shrink-0">
-                                                <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                                                <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center select-none">
                                                     <span className="text-sm font-medium text-gray-600">
                                                         {user.firstname.charAt(0)}
                                                     </span>
                                                 </div>
                                             </div>
                                             <div>
-                                                <p className="text-sm font-medium text-gray-900">
+                                                <p className="text-sm font-medium text-gray-900 select-none">
                                                     {user.firstname} {user.lastname}
                                                 </p>
-                                                <p className="text-sm text-gray-500">{user.email}</p>
+                                                <p className="text-sm text-gray-500 select-none">{user.email}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -269,25 +267,25 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                     <div className="p-6">
                                         {/* User Profile */}
                                         <div className="mb-6">
-                                            <h2 className="text-xl font-bold text-gray-900 mb-4">Profile Information</h2>
+                                            <h2 className="text-xl font-bold text-gray-900 mb-4 select-none">Profile Information</h2>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div>
-                                                    <p className="text-sm text-gray-500">Name</p>
-                                                    <p className="text-sm font-medium text-gray-900">
+                                                    <p className="text-sm text-gray-500 select-none">Name</p>
+                                                    <p className="text-sm font-medium text-gray-900 select-none">
                                                         {selectedUser.firstname} {selectedUser.lastname}
                                                     </p>
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm text-gray-500">Email</p>
-                                                    <p className="text-sm font-medium text-gray-900">{selectedUser.email}</p>
+                                                    <p className="text-sm text-gray-500 select-none">Email</p>
+                                                    <p className="text-sm font-medium text-gray-900 select-none">{selectedUser.email}</p>
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm text-gray-500">Role</p>
-                                                    <p className="text-sm font-medium text-gray-900">{selectedUser.role}</p>
+                                                    <p className="text-sm text-gray-500 select-none">Role</p>
+                                                    <p className="text-sm font-medium text-gray-900 select-none">{selectedUser.role}</p>
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm text-gray-500">Field of Interest</p>
-                                                    <p className="text-sm font-medium text-gray-900">
+                                                    <p className="text-sm text-gray-500 select-none">Field of Interest</p>
+                                                    <p className="text-sm font-medium text-gray-900 select-none">
                                                         {selectedUser.fieldOfInterest || 'Not specified'}
                                                     </p>
                                                 </div>
@@ -297,11 +295,11 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                         {/* Skills */}
                                         <div className="mb-6">
                                             <div className="flex items-center justify-between mb-4">
-                                                <h2 className="text-xl font-bold text-gray-900 flex items-center">
+                                                <h2 className="text-xl font-bold text-gray-900 flex items-center select-none">
                                                     <CodeBracketIcon className="h-6 w-6 mr-2 text-blue-600" />
                                                     Skills
                                                 </h2>
-                                                <span className="text-sm text-gray-500">
+                                                <span className="text-sm text-gray-500 select-none">
                                                     {userSkills.length} skills
                                                 </span>
                                             </div>
@@ -314,8 +312,8 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                                     {userSkills.map((skill) => (
                                                         <div key={skill.id} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                                             <div className="flex items-center justify-between">
-                                                                <p className="text-sm font-medium text-gray-900">{skill.name}</p>
-                                                                <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                                                                <p className="text-sm font-medium text-gray-900 select-none">{skill.name}</p>
+                                                                <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 select-none">
                                                                     {skill.level}
                                                                 </span>
                                                             </div>
@@ -323,7 +321,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                                     ))}
                                                     {userSkills.length === 0 && (
                                                         <div className="col-span-2 text-center py-4">
-                                                            <p className="text-gray-500">No skills listed</p>
+                                                            <p className="text-gray-500 select-none">No skills listed</p>
                                                         </div>
                                                     )}
                                                 </div>
@@ -333,11 +331,11 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                         {/* Certifications */}
                                         <div>
                                             <div className="flex items-center justify-between mb-4">
-                                                <h2 className="text-xl font-bold text-gray-900 flex items-center">
+                                                <h2 className="text-xl font-bold text-gray-900 flex items-center select-none">
                                                     <AcademicCapIcon className="h-6 w-6 mr-2 text-blue-600" />
                                                     Certifications
                                                 </h2>
-                                                <span className="text-sm text-gray-500">
+                                                <span className="text-sm text-gray-500 select-none">
                                                     {userCertifications.length} certifications
                                                 </span>
                                             </div>
@@ -350,23 +348,23 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                                     {userCertifications.map((cert) => (
                                                         <div key={cert.id} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                                             <div className="flex items-center justify-between mb-2">
-                                                                <p className="text-sm font-medium text-gray-900">{cert.name}</p>
-                                                                <span className="text-xs text-gray-500">
+                                                                <p className="text-sm font-medium text-gray-900 select-none">{cert.name}</p>
+                                                                <span className="text-xs text-gray-500 select-none">
                                                                     {new Date(cert.date).toLocaleDateString()}
                                                                 </span>
                                                             </div>
-                                                            <p className="text-sm text-gray-500 mb-2">Issuer: {cert.issuer}</p>
+                                                            <p className="text-sm text-gray-500 mb-2 select-none">Issuer: {cert.issuer}</p>
                                                             {cert.expiryDate && (
                                                                 <div className="flex items-center text-sm text-gray-500">
                                                                     <ShieldCheckIcon className="h-4 w-4 mr-1" />
-                                                                    <span>Expires: {new Date(cert.expiryDate).toLocaleDateString()}</span>
+                                                                    <span className="select-none">Expires: {new Date(cert.expiryDate).toLocaleDateString()}</span>
                                                                 </div>
                                                             )}
                                                         </div>
                                                     ))}
                                                     {userCertifications.length === 0 && (
                                                         <div className="text-center py-4">
-                                                            <p className="text-gray-500">No certifications listed</p>
+                                                            <p className="text-gray-500 select-none">No certifications listed</p>
                                                         </div>
                                                     )}
                                                 </div>
@@ -376,7 +374,7 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ user }) => {
                                 </div>
                             ) : (
                                 <div className="bg-white rounded-lg shadow p-6 text-center">
-                                    <p className="text-gray-500">Select a user to view their details</p>
+                                    <p className="text-gray-500 select-none">Select a user to view their details</p>
                                 </div>
                             )}
                         </div>
