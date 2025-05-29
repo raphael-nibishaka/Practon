@@ -292,9 +292,9 @@ const AdminOrganizations: React.FC<AdminOrganizationsProps> = ({ user }) => {
                         {/* Organization List */}
                         <div className="lg:col-span-1 bg-white rounded-lg shadow">
                             <div className="p-4 border-b select-none">
-                                <h2 className="text-lg font-semibold text-gray-900">Organizations</h2>
+                                <h2 className="text-lg font-semibold text-gray-900 select-none">Organizations</h2>
                                 {searchTerm && (
-                                    <p className="text-sm text-gray-500 mt-1">
+                                    <p className="text-sm text-gray-500 mt-1 select-none">
                                         Found {searchResults.length} results
                                     </p>
                                 )}
@@ -318,7 +318,7 @@ const AdminOrganizations: React.FC<AdminOrganizationsProps> = ({ user }) => {
                                             <div className="flex items-center space-x-3">
                                                 <div className="flex-shrink-0">
                                                     <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center select-none">
-                                                        <span className="text-sm font-medium text-gray-600">
+                                                        <span className="text-sm font-medium text-gray-600 select-none">
                                                             {org.firstname?.charAt(0) || '?'}
                                                         </span>
                                                     </div>
